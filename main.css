@@ -1,0 +1,145 @@
+body { 
+    font-family: Arial, sans-serif;
+    max-width: 800px;
+    /* add horizontal padding */
+    margin: 0 auto;
+    padding: 20px;
+}
+
+footer {
+    position: fixed; /* TODO lock to bottom of page not screen */
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #f2f2f2;
+    padding: 10px;
+    text-align: center;
+}
+
+
+nav ul {
+    list-style-type: none;
+    text-align: center;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 10px;
+}
+
+nav ul li a {
+    text-decoration: none;
+}
+
+button {
+    width: 200px;
+    height: 70px;
+    /* make button  */
+    /* add inset box shadow */
+    box-shadow:
+    inset 2px 2px 3px rgba(255, 255, 255, 0.6),
+    inset -2px -2px 3px rgba(0, 0, 0, 0.6);
+    margin: 10px;
+    border: none;
+    border-radius: 10px;
+    /* make background gradient */
+    background: linear-gradient(90deg, #ff8a00, #e52e71);
+}
+
+button:hover {
+    cursor: pointer;
+    font-size: 1.1em;
+    transition: font-size .1s;
+    transform: scale(1.05);
+}
+
+button:active {
+    transform: scale(0.95);
+    font-size: 1.1em;
+    transition: font-size .1s;
+    transition: transform .2s;
+    /* change shading */
+    box-shadow:
+    inset 2px 2px 3px rgba(0, 0, 0, 0.6),
+    inset -2px -2px 3px rgba(255, 255, 255, 0.6);
+}
+.button-container {
+    display: flex;
+    flex-wrap: wrap;
+    /* justify-content: center; */
+}
+
+.input-container {
+    display: flex;
+    gap: 50px;
+    padding-bottom: 50px;
+}
+
+textarea {
+    width: 100%;
+    height: 200px;
+    padding: 10px;
+    margin-top: 20px;
+    border-radius: 10px;
+    border: 1px solid #000;
+}
+
+#result {
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid #000;
+    border-radius: 10px;
+    background-color: #c3c3c3;
+    word-break: break-all;
+}
+
+input {
+    padding: 10px;
+    margin: 10px;
+    border: 1px solid #000;
+    border-radius: 10px;
+}
+
+#key {
+    width: 15em;
+}
+
+
+/* prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+    button:hover {
+        transform: none;
+        font-size: 1em;
+    }
+    button:active {
+        transform: none;
+        font-size: 1em;
+    }
+}
+/* Dark mode styles */
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #171616;
+        color: #fff;
+    }
+    a:visited {
+      color: #748af1;
+    }
+    nav ul li a {
+        color: #fff;
+    }
+    #result {
+        background-color: #404080;
+        border-color: #fff;
+    }
+    input {
+        background-color: #0088CB;
+        border-color: #fff;
+        color: #fff;
+    }
+    footer {
+        background-color: #222;
+        color: #fff;
+    }
+}
