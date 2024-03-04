@@ -16,7 +16,6 @@ footer {
     text-align: center;
 }
 
-
 nav ul {
     list-style-type: none;
     text-align: center;
@@ -30,6 +29,7 @@ nav ul li {
 
 nav ul li a {
     text-decoration: none;
+    color: #000;
 }
 
 button {
@@ -123,11 +123,11 @@ input {
         background-color: #171616;
         color: #fff;
     }
-    a:visited {
-      color: #748af1;
-    }
     nav ul li a {
         color: #fff;
+    }
+    a:not(.navbar) :visited {
+        color: #748af1;
     }
     #result {
         background-color: #404080;
