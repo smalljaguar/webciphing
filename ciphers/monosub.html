@@ -40,7 +40,7 @@ ciphertext = plaintext.map(letter => mapping[letter])
         <p>Enter the text:</p>
         <textarea id="input" rows="4" cols="50"></textarea>
         <div class="input-container">
-            <span
+            <div
                 ><p>enter the key:</p>
                 <input
                     type="text"
@@ -58,8 +58,8 @@ ciphertext = plaintext.map(letter => mapping[letter])
                 >
                     Decrypt Text
                 </button>
-            </span>
-            <span
+            </div>
+            <div
                 ><p>Rotate the key this much when "rotate key" is pressed:</p>
                 <input
                     type="number"
@@ -70,13 +70,13 @@ ciphertext = plaintext.map(letter => mapping[letter])
                     value="0"
                 />
                 <button onclick="rotateKeyInPlace()">Rotate Key</button>
-            </span>
-            <span>
+            </div>
+            <div>
                 <p>Swap characters:</p>
                 <input type="text" id="swap1" name="swap1" value="a" />
                 <input type="text" id="swap2" name="swap2" value="b" />
                 <button onclick="swapCharsInPlace()">Swap Characters</button>
-            </span>
+            </div>
         </div>
 
         <div id="result">

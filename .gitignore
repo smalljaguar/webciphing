@@ -1,3 +1,6 @@
 /cleanup.js
 /count_1w.json
+/count_1w_rounded.json
+*.br
+*.gz
 /count_1w.txt
