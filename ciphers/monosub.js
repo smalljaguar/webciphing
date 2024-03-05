@@ -11,16 +11,13 @@ function makeKey(key) {
 
 function rotateKey(key, n) {
     // rotate key by n places
-    console.log(n);
     let m = (n + 26) % 26;
-    // WTF??
-    console.log(m);
     return key.slice(m) + key.slice(0, m);
 }
 
 function rotateKeyInPlace() {
     // rotate key by n places
-    let n = document.getElementById("rotate").value;
+    let n = Number(document.getElementById("rotate").value);
     let key = document.getElementById("key").value;
     document.getElementById("key").value = rotateKey(key, n);
 }
