@@ -1,14 +1,17 @@
 <!DOCTYPE html>
-<meta charset="UTF-8">
-<link rel="stylesheet" type="text/css" href="main.css">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="icon" href="favicon.png" type="image/png">
-<meta name="description" content="A selection of tools to help cleanup text both before and after decryption">
-
 
 <html lang="en-GB">
     <head>
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" type="text/css" href="main.css" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="favicon.png" type="image/png" />
+        <meta
+            name="description"
+            content="A selection of tools to help cleanup text both before and after decryption"
+        />
         <title>CiphingTools</title>
+        <script type="module" src="cleanup_module.js"></script>
     </head>
     <body>
         <nav>
@@ -29,21 +32,25 @@
             <li><p>Add spaces back to decrypted text</p></li>
             <!-- TODO: <li><p>Autocorrect slightly malformed text</p></li> -->
         </ul>
-        <label> Enter the text you want to clean up: <br>
-        <textarea id="input" rows="4" cols="50"></textarea>
+        <label>
+            Enter the text you want to clean up: <br />
+            <textarea id="input" rows="4" cols="50"></textarea>
         </label>
-        <script type="module" src="cleanup_module.js"></script>
         <br />
         <div class="button-container">
-            <button onclick="removeNonAlpha()">Remove non alphabetic characters</button>
+            <button onclick="removeNonAlpha()">
+                Remove non alphabetic characters
+            </button>
             <button onclick="toLower()">Convert to lowercase</button>
             <button onclick="toUpper()">Convert to uppercase</button>
-            <button onclick="addSpaces()">Add spaces back to decrypted text</button>
+            <button onclick="addSpaces()">
+                Add spaces back to decrypted text
+            </button>
             <button onclick="copyToClipboard()">Copy to clipboard</button>
         </div>
 
         <!-- nb This is a hack to make sure the footer does not overlap with the bottom of the content -->
-        <br style="line-height: 1000%;" /> 
+        <br style="line-height: 1000%" />
         <footer>
             <p>This is the footer of the website.</p>
         </footer>

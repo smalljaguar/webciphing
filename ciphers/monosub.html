@@ -1,12 +1,15 @@
 <!DOCTYPE html>
-<meta charset="UTF-8">
-<link rel="stylesheet" type="text/css" href="../main.css">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="icon" href="../favicon.png" type="image/png">
-<meta name="description" content="A tool to encrypt and decrypt Monoalphabetic substitution ciphers">
 
 <html lang="en-GB">
     <head>
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" type="text/css" href="../main.css" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="../favicon.png" type="image/png" />
+        <meta
+            name="description"
+            content="A tool to encrypt and decrypt Monoalphabetic substitution ciphers"
+        />
         <title>CiphingTools</title>
         <script type="text/javascript" src="monosub.js"></script>
     </head>
@@ -75,7 +78,6 @@ ciphertext = plaintext.map(letter => mapping[letter])
                 <button onclick="swapCharsInPlace()">Swap Characters</button>
             </span>
         </div>
-
 
         <div id="result">
             <p>Results show here</p>

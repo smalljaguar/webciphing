@@ -1,13 +1,17 @@
 <!DOCTYPE html>
-<meta charset="UTF-8">
-<link rel="stylesheet" type="text/css" href="../main.css">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="icon" href="../favicon.png" type="image/png">
-<meta name="description" content="An overview of ciphers available, from atbash to vigenere">
 
 <html lang="en-GB">
     <head>
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" type="text/css" href="../main.css" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="../favicon.png" type="image/png" />
+        <meta
+            name="description"
+            content="An overview of ciphers available, from atbash to vigenere"
+        />
         <title>CiphingTools</title>
+        <script src="caesar.js"></script>
     </head>
     <body>
         <nav>
@@ -18,11 +22,18 @@
                 <li><a href="../cleanup.html"> Text Cleanup </a></li>
             </ul>
         </nav>
-        <h1> Caesar Cipher </h1>
-        <h2> Theory </h2>
-        <p> The Caesar cipher is a simple substitution cipher, where each letter in the plaintext is shifted a certain number of places down the alphabet. </p>
-        <p> It is a general case of rot13, and a special case of a <a href="monosub.html">Monoalphabetic substitution cipher</a> </p>
-        <h2> Pseudo Code </h2>
+        <h1>Caesar Cipher</h1>
+        <h2>Theory</h2>
+        <p>
+            The Caesar cipher is a simple substitution cipher, where each letter
+            in the plaintext is shifted a certain number of places down the
+            alphabet.
+        </p>
+        <p>
+            It is a general case of rot13, and a special case of a
+            <a href="monosub.html">Monoalphabetic substitution cipher</a>
+        </p>
+        <h2>Pseudo Code</h2>
         <pre>
             <code>
 function caesarCipher(text, shift){
@@ -30,15 +41,29 @@ function caesarCipher(text, shift){
     char = (char - 97 + shift) % 26 + 97 : char;
 }
             </code></pre>
-        <h2> Encrypt/Decrypt </h2>
-        <script src="caesar.js"></script>
+        <h2>Encrypt/Decrypt</h2>
         <textarea id="input" rows="4" cols="50"></textarea>
-        <input type="number" id="shift" name="shift" value="0" min="0" max="26" required/>
-        <button onclick="encryptText(document.getElementById('input').value, Number(document.getElementById('shift').value))">Encrypt Text</button>
-        <button onclick="decryptText(document.getElementById('input').value, Number(document.getElementById('shift').value))">Decrypt Text</button>
-        <div id="result">
-        </div>
-        <br style="line-height: 1000%;" />
+        <input
+            type="number"
+            id="shift"
+            name="shift"
+            value="0"
+            min="0"
+            max="26"
+            required
+        />
+        <button
+            onclick="encryptText(document.getElementById('input').value, Number(document.getElementById('shift').value))"
+        >
+            Encrypt Text
+        </button>
+        <button
+            onclick="decryptText(document.getElementById('input').value, Number(document.getElementById('shift').value))"
+        >
+            Decrypt Text
+        </button>
+        <div id="result"></div>
+        <br style="line-height: 1000%" />
         <footer>
             <p>This is the footer of the website.</p>
         </footer>
