@@ -1,92 +1,90 @@
 <!DOCTYPE html>
 
 <html lang="en-GB">
-    <head>
-        <meta charset="UTF-8" />
-        <link rel="stylesheet" type="text/css" href="main.css" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="favicon.png" type="image/png" />
-        <meta
-            name="description"
-            content="A set of tools for analysis of ciphertext"
-        />
-        <title>CiphingTools</title>
-        <script src="analysis.js"></script>
-    </head>
-    <body>
-        <header>
-            <nav>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="ciphers">Ciphers</a></li>
-                    <li><a href="analysis.html">Cipher Identifier</a></li>
-                    <li><a href="cleanup.html"> Text Cleanup </a></li>
-                </ul>
-            </nav>
-            <select id="colour-mode">
-                <option value="">Theme Selector</option>
-                <option value="dark">Dark Mode</option>
-                <option value="light">Light and Bright</option>
-              </select>
-        </header>
-        <h1>Cipher identifier</h1>
-        <p>This page will help you identify the type of cipher you have.</p>
-        <p>
-            You can use different measures for testing different properties of
-            the text.
-        </p>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" type="text/css" href="main.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="favicon.png" type="image/png" />
+    <meta
+      name="description"
+      content="A set of tools for analysis of ciphertext"
+    />
+    <title>CiphingTools</title>
+    <script src="analysis.js"></script>
+  </head>
+  <body>
+    <header>
+      <nav>
         <ul>
-            <li>
-                <p>
-                    Index of Coincidence - Can detect if text has been put
-                    through polyalphabetic cipher. For english text, a typical
-                    value is around 0.067, but anything between 0.06 and 0.07 is
-                    normal. If it has been put through a polyalphabetic cipher
-                    like vigenere, it will be closer to that of random data,
-                    i.e. closer to 0.04.
-                </p>
-            </li>
-            <li>
-                <p>
-                    Chi Squared - Can detect if text has been put through a
-                    substitution cipher
-                </p>
-            </li>
-            <li>
-                <p>
-                    Stepped IOC - can be used to find keylen of polyalphabetic
-                    cipher (low range also implies not polyalphabetic)
-                </p>
-            </li>
-            <!-- <li><p>Ngram frequency - can be used to find block size for transposition ciphers</p></li> -->
-            <li>
-                <p>
-                    Missing Characters - some ciphers use an alphabet of 25
-                    characters. If this is detected it significantly narrows
-                    down the possibilities
-                </p>
-            </li>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="ciphers">Ciphers</a></li>
+          <li><a href="analysis.html">Cipher Identifier</a></li>
+          <li><a href="cleanup.html"> Text Cleanup </a></li>
         </ul>
+      </nav>
+      <select id="colour-mode">
+        <option value="">Theme Selector</option>
+        <option value="dark">Dark Mode</option>
+        <option value="light">Light and Bright</option>
+      </select>
+    </header>
+    <h1>Cipher identifier</h1>
+    <p>This page will help you identify the type of cipher you have.</p>
+    <p>
+      You can use different measures for testing different properties of the
+      text.
+    </p>
+    <ul>
+      <li>
         <p>
-            IMPORTANT! this assumes all text is lowercase and processed (i.e.
-            whitespace removed)
+          Index of Coincidence - Can detect if text has been put through
+          polyalphabetic cipher. For english text, a typical value is around
+          0.067, but anything between 0.06 and 0.07 is normal. If it has been
+          put through a polyalphabetic cipher like vigenere, it will be closer
+          to that of random data, i.e. closer to 0.04.
         </p>
-        <label>
-            Enter the text you want to analyse: <br />
-            <textarea id="input" rows="4" cols="50"></textarea>
-        </label>
-        <br />
-        <button onclick="analyseText(document.getElementById('input').value)">
-            Analyse Text
-        </button>
-        <br />
-        <div id="result">
-            <p>Results show here</p>
-        </div>
+      </li>
+      <li>
+        <p>
+          Chi Squared - Can detect if text has been put through a substitution
+          cipher
+        </p>
+      </li>
+      <li>
+        <p>
+          Stepped IOC - can be used to find keylen of polyalphabetic cipher (low
+          range also implies not polyalphabetic)
+        </p>
+      </li>
+      <!-- <li><p>Ngram frequency - can be used to find block size for transposition ciphers</p></li> -->
+      <li>
+        <p>
+          Missing Characters - some ciphers use an alphabet of 25 characters. If
+          this is detected it significantly narrows down the possibilities
+        </p>
+      </li>
+    </ul>
+    <p>
+      IMPORTANT! this assumes all text is lowercase and processed (i.e.
+      whitespace removed)
+    </p>
+    <label>
+      Enter the text you want to analyse: <br />
+      <textarea id="input" rows="4" cols="50"></textarea>
+    </label>
+    <br />
+    <button onclick="analyseText(document.getElementById('input').value)">
+      Analyse Text
+    </button>
+    <br />
+    <div id="result">
+      <p>Results show here</p>
+    </div>
 
-        <br style="line-height: 1000%" />
-        <footer>
-            <p>This is the footer of the website.</p>
-        </footer>
-    </body>
+    <br style="line-height: 1000%" />
+    <footer>
+      <p>This is the footer of the website.</p>
+    </footer>
+  </body>
 </html>
