@@ -64,6 +64,9 @@ ciphertext = plaintext.map(letter => mapping[letter]);
         >
           Decrypt Text
         </button>
+        <button onclick="smartDecryptText(document.getElementById('input').value)">
+          Smart Decrypt Text
+        </button>
       </div>
       <div>
         <p>Rotate the key this much when "rotate key" is pressed:</p>
@@ -82,6 +85,7 @@ ciphertext = plaintext.map(letter => mapping[letter]);
         <input type="text" id="swap1" name="swap1" value="a" />
         <input type="text" id="swap2" name="swap2" value="b" />
         <button onclick="swapCharsInPlace()">Swap Characters</button>
+        <button onclick="shuffleKey()"> Shuffle key </button>
       </div>
     </div>
 
