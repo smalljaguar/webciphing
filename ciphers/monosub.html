@@ -1,97 +1,97 @@
 <!DOCTYPE html>
 
 <html lang="en-GB">
-    <head>
-        <meta charset="UTF-8" />
-        <link rel="stylesheet" type="text/css" href="../main.css" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="../favicon.png" type="image/png" />
-        <meta
-            name="description"
-            content="A tool to encrypt and decrypt Monoalphabetic substitution ciphers"
-        />
-        <title>CiphingTools</title>
-        <script type="text/javascript" src="monosub.js"></script>
-    </head>
-    <body>
-        <header>
-            <nav>
-                <ul>
-                    <li><a href="../index.html">Home</a></li>
-                    <li><a href="../ciphers">Ciphers</a></li>
-                    <li><a href="../analysis.html">Cipher Identifier</a></li>
-                    <li><a href="../cleanup.html"> Text Cleanup </a></li>
-                </ul>
-            </nav>
-            <select id="colour-mode">
-                <option value="">Theme Selector</option>
-                <option value="dark">Dark Mode</option>
-                <option value="light">Light and Bright</option>
-              </select>
-        </header>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" type="text/css" href="../main.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="../favicon.png" type="image/png" />
+    <meta
+      name="description"
+      content="A tool to encrypt and decrypt Monoalphabetic substitution ciphers"
+    />
+    <title>CiphingTools</title>
+    <script type="text/javascript" src="monosub.js"></script>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../ciphers">Ciphers</a></li>
+          <li><a href="../analysis.html">Cipher Identifier</a></li>
+          <li><a href="../cleanup.html"> Text Cleanup </a></li>
+        </ul>
+      </nav>
+      <select id="colour-mode">
+        <option value="">Theme Selector</option>
+        <option value="dark">Dark Mode</option>
+        <option value="light">Light and Bright</option>
+      </select>
+    </header>
 
-        <h1>Monoalphabetic substitution cipher</h1>
-        <h2>Theory</h2>
-        <p>
-            With this cipher, every letter in the plaintext is mapped to
-            another. It is a general form of the caesar cipher,atbash,...
-        </p>
-        <p>A simple implementation would be:</p>
-        <pre><code>
+    <h1>Monoalphabetic substitution cipher</h1>
+    <h2>Theory</h2>
+    <p>
+      With this cipher, every letter in the plaintext is mapped to another. It
+      is a general form of the caesar cipher,atbash,...
+    </p>
+    <p>A simple implementation would be:</p>
+    <pre><code>
 mapping = {"a":"b", "b":"c", "c":"d", ...}
 plaintext = "hello"
 ciphertext = plaintext.map(letter => mapping[letter])
         </code></pre>
-        <h2>Encrypt/Decrypt</h2>
-        <p>Enter the text:</p>
-        <textarea id="input" rows="4" cols="50"></textarea>
-        <div class="input-container">
-            <div
-                ><p>enter the key:</p>
-                <input
-                    type="text"
-                    id="key"
-                    name="key"
-                    value="abcdefghijklmnopqrstuvwxyz"
-                />
-                <button
-                    onclick="encryptText(document.getElementById('input').value, document.getElementById('key').value)"
-                >
-                    Encrypt Text
-                </button>
-                <button
-                    onclick="decryptText(document.getElementById('input').value, document.getElementById('key').value)"
-                >
-                    Decrypt Text
-                </button>
-            </div>
-            <div
-                ><p>Rotate the key this much when "rotate key" is pressed:</p>
-                <input
-                    type="number"
-                    id="rotate"
-                    min="-26"
-                    max="26"
-                    name="rotate"
-                    value="0"
-                />
-                <button onclick="rotateKeyInPlace()">Rotate Key</button>
-            </div>
-            <div>
-                <p>Swap characters:</p>
-                <input type="text" id="swap1" name="swap1" value="a" />
-                <input type="text" id="swap2" name="swap2" value="b" />
-                <button onclick="swapCharsInPlace()">Swap Characters</button>
-            </div>
-        </div>
+    <h2>Encrypt/Decrypt</h2>
+    <p>Enter the text:</p>
+    <textarea id="input" rows="4" cols="50"></textarea>
+    <div class="input-container">
+      <div>
+        <p>enter the key:</p>
+        <input
+          type="text"
+          id="key"
+          name="key"
+          value="abcdefghijklmnopqrstuvwxyz"
+        />
+        <button
+          onclick="encryptText(document.getElementById('input').value, document.getElementById('key').value)"
+        >
+          Encrypt Text
+        </button>
+        <button
+          onclick="decryptText(document.getElementById('input').value, document.getElementById('key').value)"
+        >
+          Decrypt Text
+        </button>
+      </div>
+      <div>
+        <p>Rotate the key this much when "rotate key" is pressed:</p>
+        <input
+          type="number"
+          id="rotate"
+          min="-26"
+          max="26"
+          name="rotate"
+          value="0"
+        />
+        <button onclick="rotateKeyInPlace()">Rotate Key</button>
+      </div>
+      <div>
+        <p>Swap characters:</p>
+        <input type="text" id="swap1" name="swap1" value="a" />
+        <input type="text" id="swap2" name="swap2" value="b" />
+        <button onclick="swapCharsInPlace()">Swap Characters</button>
+      </div>
+    </div>
 
-        <div id="result">
-            <p>Results show here</p>
-        </div>
-        <!-- nb This is a hack to make sure the footer does not overlap with the bottom of the content -->
-        <br style="line-height: 1000%" />
-        <footer>
-            <p>This is the footer of the website.</p>
-        </footer>
-    </body>
+    <div id="result">
+      <p>Results show here</p>
+    </div>
+    <!-- nb This is a hack to make sure the footer does not overlap with the bottom of the content -->
+    <br style="line-height: 1000%" />
+    <footer>
+      <p>This is the footer of the website.</p>
+    </footer>
+  </body>
 </html>
