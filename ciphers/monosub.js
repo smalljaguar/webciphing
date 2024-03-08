@@ -56,6 +56,24 @@ function monoDecrypt(text, key) {
         .join("");
 }
 
+// if this isn't good enough, can use trigrams
+// also not in any way optimized for performance btw
+function chiSquared(text) {
+    let char_freqs = [
+        0.08167, 0.01492, 0.02782, 0.04253, 0.12702, 0.02228, 0.02015, 0.06094,
+        0.06966, 0.00153, 0.00772, 0.04025, 0.02406, 0.06749, 0.07507, 0.01929,
+        0.00095, 0.05987, 0.06327, 0.09056, 0.02758, 0.00978, 0.0236, 0.0015,
+        0.01974, 0.00074,
+    ];
+    total = 0;
+    for (let c = 0; c < 26; c++) {
+        char = "abcdefghijklmnopqrstuvwxyz".charAt(c);
+        observed = count(text, char);
+        expected = char_freqs[c] * text.length;
+        total += Math.pow(observed - expected, 2) / expected;
+    }
+    return total;
+}
 function smartMonoDecrypt(text) {
     // TODO implement this
     // algorithm is hill-climbing
