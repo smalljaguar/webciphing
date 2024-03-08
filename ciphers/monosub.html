@@ -3,9 +3,9 @@
 <html lang="en-GB">
   <head>
     <meta charset="UTF-8" />
-    <link rel="stylesheet" type="text/css" href="../main.css" />
+    <link rel="stylesheet" type="text/css" href="/main.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" href="../favicon.png" type="image/png" />
+    <link rel="icon" href="/favicon.png" type="image/png" />
     <meta
       name="description"
       content="A tool to encrypt and decrypt Monoalphabetic substitution ciphers"
@@ -17,10 +17,10 @@
     <header>
       <nav>
         <ul>
-          <li><a href="../index.html">Home</a></li>
-          <li><a href="../ciphers">Ciphers</a></li>
-          <li><a href="../analysis.html">Cipher Identifier</a></li>
-          <li><a href="../cleanup.html"> Text Cleanup </a></li>
+          <li><a href="/index.html">Home</a></li>
+          <li><a href="/ciphers">Ciphers</a></li>
+          <li><a href="/analysis.html">Cipher Identifier</a></li>
+          <li><a href="/cleanup.html"> Text Cleanup </a></li>
         </ul>
       </nav>
       <select id="colour-mode">
@@ -34,11 +34,11 @@
     <h2>Theory</h2>
     <p>
       With this cipher, every letter in the plaintext is mapped to another. It
-      is a general form of the caesar cipher,atbash,...
+      is a general form of the caesar cipher,atbash,.
     </p>
     <p>A simple implementation would be:</p>
     <pre><code>
-mapping = {"a":"b", "b":"c", "c":"d", ...}
+mapping = {"a":"b", "b":"c", "c":"d", .}
 plaintext = "hello"
 ciphertext = plaintext.map(letter => mapping[letter])
         </code></pre>
