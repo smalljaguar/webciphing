@@ -5,16 +5,24 @@
     --light-text: #000;
     --light-link-visited: #551a8b;
     --light-result: #c3c3c3;
-
+    --light-filter: sepia(0.5) saturate(1.5);
     /* Dark mode variables */
     --dark-background: #171616;
     --dark-bg: #222;
     --dark-text: #fff;
     --dark-link-visited: #748af1;
     --dark-result: #404080;
-    /*  Default variables */
+    --dark-filter: contrast(1.5); 
+    /* could add another theme? */
+    /*  Default variables if no preference set */
     --background: var(--light-background);
     --text: var(--light-text);
+    --link-visited: var(--light-link-visited);
+    --bg: var(--light-bg);
+    --result: var(--light-result);
+    --filter: var(--light-filter);
+    /* I feel like there are more fun things to use filters
+    for but can't think of anything now*/
 }
 
 @media (prefers-color-scheme: light) {
@@ -24,6 +32,7 @@
         --link-visited: var(--light-link-visited);
         --bg: var(--light-bg);
         --result: var(--light-result);
+        --filter: var(--light-filter);
     }
 }
 
@@ -34,6 +43,7 @@
         --link-visited: var(--dark-link-visited);
         --bg: var(--dark-bg);
         --result: var(--dark-result);
+        --filter: var(--dark-filter);
     }
 }
 
@@ -43,6 +53,7 @@
     --link-visited: var(--dark-link-visited);
     --bg: var(--dark-bg);
     --result: var(--dark-result);
+    --filter: var(--dark-filter);
 }
 
 :root:has(select#colour-mode option:checked[value=light]) {
@@ -51,6 +62,7 @@
     --link-visited: var(--light-link-visited);
     --bg: var(--light-bg);
     --result: var(--light-result);
+    --filter: var(--light-filter);
 }
 
 body {
@@ -64,6 +76,7 @@ body {
     font-size: 1.2rem;
     background-color: var(--background);
     color: var(--text);
+    filter: var(--filter);
 }
 
 footer {
@@ -80,7 +93,7 @@ footer {
 select {
     padding: 10px;
     margin: 10px;
-    border: 1px solid --var(text);
+    border: 1px solid var(--text);
     border-radius: 10px;
     color: var(--text);
     background-color: var(--bg);
@@ -121,9 +134,10 @@ nav ul li a {
     color: var(--text);
 }
 
-a :not(navbar) :visited {
+a:not(nav ul li a):visited {
     color: var(--link-visited);
 }
+
 
 button {
     width: 200px;
@@ -188,7 +202,7 @@ textarea {
 input {
     padding: 10px;
     margin: 10px;
-    border: 1px solid --var(text);
+    border: 1px solid var(--text);
     border-radius: 10px;
 }
 
