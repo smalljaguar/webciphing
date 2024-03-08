@@ -65,7 +65,8 @@ body {
 }
 
 footer {
-    position: fixed; /* TODO lock to bottom of page not screen */
+    /* position: fixed; TODO lock to bottom of page not screen */
+    margin-top: 100px;
     bottom: 0;
     left: 0;
     width: 100%;
@@ -109,7 +110,7 @@ nav ul li {
     /* prevent word-wrapping */
     white-space: nowrap;
     /* better for small widths (mobile) */
-    line-height: 2em;
+    line-height: 2;
     margin-right: 10px;
 }
 
@@ -190,7 +191,7 @@ input {
 }
 
 #key {
-    width: 15em;
+    width: 25ch;  
 }
 
 /* prefers-reduced-motion */
