@@ -103,6 +103,7 @@ select {
 
 header {
     display: flex;
+    flex-wrap: wrap;
 }
 
 nav {
@@ -112,6 +113,7 @@ nav {
     background-color: var(--bg);
     border-radius: 10px;
     margin: 10px;
+    min-width: 400px;
 }
 
 nav ul {
@@ -125,6 +127,8 @@ nav ul li {
     /* prevent word-wrapping */
     white-space: nowrap;
     /* better for small widths (mobile) */
+    /* for low widths make text shrink */
+    text-size-adjust: auto; 
     line-height: 2;
     margin-right: 10px;
 }
