@@ -44,7 +44,8 @@
             <code>
 function caesarCipher(text, shift){
     return text.map((char) => char.match(/[a-z]/)) ?
-    char = (char - 97 + shift) % 26 + 97 : char; // 97 is ascii code for 'a'
+    let a = "a".charCodeAt(0);
+    char = (char - a + shift) % 26 + a : char; 
 }
             </code></pre>
     <h2>Encrypt/Decrypt</h2>
