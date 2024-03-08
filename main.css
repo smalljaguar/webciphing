@@ -60,6 +60,8 @@ body {
     /* add horizontal padding */
     margin: 0 auto;
     padding: 20px;
+    line-height: 1.618;
+    font-size: 1.2rem;
     background-color: var(--background);
     color: var(--text);
 }
