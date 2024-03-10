@@ -21,12 +21,15 @@ function rotateKeyInPlace() {
   let key = document.getElementById("key").value;
   document.getElementById("key").value = rotateKey(key, n);
 }
+document
+  .getElementById("rotate-key")
+  .addEventListener("click", rotateKeyInPlace);
 
 function swapChars(key, a, b) {
   // swap 2 letters in key
   let keylist = key.split("");
-  a_i = keylist.indexOf(a);
-  b_i = keylist.indexOf(b);
+  let a_i = keylist.indexOf(a);
+  let b_i = keylist.indexOf(b);
   keylist[a_i] = b;
   keylist[b_i] = a;
   return keylist.join("");
@@ -39,6 +42,9 @@ function swapCharsInPlace() {
   let key = document.getElementById("key").value;
   document.getElementById("key").value = swapChars(key, a, b);
 }
+document
+  .getElementById("swap-chars")
+  .addEventListener("click", swapCharsInPlace);
 
 function monoEncrypt(text, key) {
   let keymap = makeKey(key);
@@ -65,11 +71,11 @@ function chiSquared(text) {
     0.00095, 0.05987, 0.06327, 0.09056, 0.02758, 0.00978, 0.0236, 0.0015,
     0.01974, 0.00074,
   ];
-  total = 0;
+  let total = 0;
   for (let c = 0; c < 26; c++) {
-    char = "abcdefghijklmnopqrstuvwxyz".charAt(c);
-    observed = count(text, char);
-    expected = char_freqs[c] * text.length;
+    let char = "abcdefghijklmnopqrstuvwxyz".charAt(c);
+    let observed = count(text, char);
+    let expected = char_freqs[c] * text.length;
     total += Math.pow(observed - expected, 2) / expected;
   }
   return total;
@@ -89,7 +95,8 @@ function smartMonoDecrypt(text) {
   // for each iteration, swap 2 letters
   // if score increases, keep swap, otherwise revert
   key = "abcdefghijklmnopqrstuvwxyz";
-  topScore = chiSquared(monoDecrypt(text, key));
+  let topScore = chiSquared(monoDecrypt(text, key));
+  let plainText;
   console.log(key, topScore);
   if (key.length != 26) {
     throw "Key must be 26 characters long";
@@ -117,26 +124,40 @@ function smartMonoDecrypt(text) {
 }
 
 function encryptText(text, key) {
-  key = key.toLowerCase();
   text = text.toLowerCase();
-  key = key.replace(/[^a-z]/g, "");
-  cipherText = monoEncrypt(text, key);
+  key = key.toLowerCase().replace(/[^a-z]/g, "");
+  let cipherText = monoEncrypt(text, key);
   document.getElementById("result").innerHTML = cipherText;
 }
+document.getElementById("decrypt").addEventListener("click", function () {
+  decryptText(
+    document.getElementById("input").value,
+    document.getElementById("key").value
+  );
+});
 
 function decryptText(text, key) {
   key = key.toLowerCase();
   text = text.toLowerCase();
   key = key.replace(/[^a-z]/g, "");
-  plainText = monoDecrypt(text, key);
+  let plainText = monoDecrypt(text, key);
   document.getElementById("result").innerHTML = plainText;
 }
+document.getElementById("encrypt").addEventListener("click", function () {
+  encryptText(
+    document.getElementById("input").value,
+    document.getElementById("key").value
+  );
+});
 
 function smartDecryptText(text) {
-  key = smartMonoDecrypt(text);
-  plainText = monoDecrypt(text, key);
+  let key = smartMonoDecrypt(text);
+  let plainText = monoDecrypt(text, key);
   document.getElementById("result").innerHTML = plainText;
 }
+document.getElementById("smart-decrypt").addEventListener("click", function () {
+  smartDecryptText(document.getElementById("input").value);
+});
 
 function reverseKey(key) {
   let reversed = Object.entries(key).map((kv) => kv.reverse());
@@ -153,3 +174,4 @@ function shuffleKey() {
     .join("");
   document.getElementById("key").value = shuffled;
 }
+document.getElementById("shuffle-key").addEventListener("click", shuffleKey);

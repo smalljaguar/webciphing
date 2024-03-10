@@ -11,7 +11,7 @@
       content="A selection of tools to help cleanup text both before and after decryption"
     />
     <title>CiphingTools</title>
-    <script type="module" src="cleanup_module.js"></script>
+    <script type="module" src="cleanup.js"></script>
   </head>
   <body>
     <header>
@@ -45,13 +45,13 @@
     </label>
     <br />
     <div class="button-container">
-      <button onclick="removeNonAlpha()">
+      <button id="remove-non-alpha">
         Remove non alphabetic characters
       </button>
-      <button onclick="toLower()">Convert to lowercase</button>
-      <button onclick="toUpper()">Convert to uppercase</button>
-      <button onclick="addSpaces()">Add spaces back to decrypted text</button>
-      <button onclick="copyToClipboard()">Copy to clipboard</button>
+      <button id="to-lower">Convert to lowercase</button>
+      <button id="to-upper">Convert to uppercase</button>
+      <button id="add-spaces">Add spaces back to decrypted text</button>
+      <button id="copy-to-clipboard">Copy to clipboard</button>
     </div>
 
     <!-- nb This is a hack to make sure the footer does not overlap with the bottom of the content -->

@@ -11,7 +11,7 @@
       content="A tool to encrypt and decrypt Monoalphabetic substitution ciphers"
     />
     <title>CiphingTools</title>
-    <script type="text/javascript" src="monosub.js"></script>
+    <script type="module" src="monosub.js"></script>
   </head>
   <body>
     <header>
@@ -54,22 +54,18 @@ ciphertext = plaintext.map(letter => mapping[letter]);
           name="key"
           value="abcdefghijklmnopqrstuvwxyz"
         />
-        <button
-          onclick="encryptText(document.getElementById('input').value, document.getElementById('key').value)"
-        >
+        <button id="encrypt">
           Encrypt Text
         </button>
-        <button
-          onclick="decryptText(document.getElementById('input').value, document.getElementById('key').value)"
-        >
+        <button id="decrypt">
           Decrypt Text
         </button>
-        <button onclick="smartDecryptText(document.getElementById('input').value)">
-          Smart Decrypt Text
+        <button id="smart-decrypt">
+        Smart Decrypt Text
         </button>
       </div>
       <div>
-        <p>Rotate the key this much when "rotate key" is pressed:</p>
+        <p>Rotate the key this much:</p>
         <input
           type="number"
           id="rotate"
@@ -78,14 +74,14 @@ ciphertext = plaintext.map(letter => mapping[letter]);
           name="rotate"
           value="0"
         />
-        <button onclick="rotateKeyInPlace()">Rotate Key</button>
+        <button id="rotate-key">Rotate Key</button>
+        <button id="shuffle-key"> Shuffle key </button>
       </div>
       <div>
         <p>Swap characters:</p>
         <input type="text" id="swap1" name="swap1" value="a" />
         <input type="text" id="swap2" name="swap2" value="b" />
-        <button onclick="swapCharsInPlace()">Swap Characters</button>
-        <button onclick="shuffleKey()"> Shuffle key </button>
+        <button id="swap-chars">Swap Characters</button>
       </div>
     </div>
 
