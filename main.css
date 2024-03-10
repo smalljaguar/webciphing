@@ -181,8 +181,14 @@ button:active {
 
 .input-container {
     display: flex;
-    gap: 50px;
+    flex-wrap: wrap;
+    gap: 10px;
     padding-bottom: 50px;
+}
+
+.column {
+    flex: 1;
+    padding: 10px;
 }
 
 textarea {
@@ -194,7 +200,7 @@ textarea {
     border: 1px solid #000;
 }
 
-#result {
+.result {
     margin-top: 20px;
     padding: 20px;
     border: 1px solid var(--text);

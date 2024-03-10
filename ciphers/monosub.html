@@ -46,7 +46,7 @@ ciphertext = plaintext.map(letter => mapping[letter]);
     <p>Enter the text:</p>
     <textarea id="input" rows="4" cols="50"></textarea>
     <div class="input-container">
-      <div>
+      <div class="column">
         <p>enter the key:</p>
         <input
           type="text"
@@ -54,17 +54,28 @@ ciphertext = plaintext.map(letter => mapping[letter]);
           name="key"
           value="abcdefghijklmnopqrstuvwxyz"
         />
-        <button id="encrypt">
-          Encrypt Text
-        </button>
-        <button id="decrypt">
-          Decrypt Text
-        </button>
-        <button id="smart-decrypt">
-        Smart Decrypt Text
-        </button>
+        <button id="encrypt">Encrypt Text</button>
+        <button id="decrypt">Decrypt Text</button>
       </div>
-      <div>
+      <div class="column">
+        <p>Smart Decrypt iterations:</p>
+        <input
+          type="number"
+          id="iters"
+          min="1"
+          max="100"
+          name="smart-decrypt-iterations"
+          value="10"
+        />
+        <button id="smart-decrypt">Smart Decrypt Text</button>
+        <div class="result" style="font-size: .8em;">
+          <p>Found Key:</p>
+          <p id="key-result"></p>
+          <p>Score:</p>
+          <p id="score-result"></p>
+        </div>
+      </div>
+      <div class="column">
         <p>Rotate the key this much:</p>
         <input
           type="number"
@@ -75,9 +86,9 @@ ciphertext = plaintext.map(letter => mapping[letter]);
           value="0"
         />
         <button id="rotate-key">Rotate Key</button>
-        <button id="shuffle-key"> Shuffle key </button>
+        <button id="shuffle-key">Shuffle key</button>
       </div>
-      <div>
+      <div class="column">
         <p>Swap characters:</p>
         <input type="text" id="swap1" name="swap1" value="a" />
         <input type="text" id="swap2" name="swap2" value="b" />
@@ -85,7 +96,7 @@ ciphertext = plaintext.map(letter => mapping[letter]);
       </div>
     </div>
 
-    <div id="result">
+    <div class="result" id="result">
       <p>Results show here</p>
     </div>
     <!-- nb This is a hack to make sure the footer does not overlap with the bottom of the content -->

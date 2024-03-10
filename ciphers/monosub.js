@@ -1,3 +1,23 @@
+import { trigrams } from "../modules/trigrams.js";
+function encodeTrigram(tri) {
+  return (
+    (tri.charCodeAt(0) - 97) * 26 * 26 +
+    (tri.charCodeAt(1) - 97) * 26 +
+    (tri.charCodeAt(2) - 97)
+  );
+}
+
+// could normalise by textlen if necessary but should be fine
+// returns logprob of text by assuming independence of trigrams
+function triScore(text) {
+  let totalScore = 0;
+  for (let i = 0; i < text.length - 2; i++) {
+    let tri = encodeTrigram(text.slice(i, i + 3));
+    let score = trigrams[tri] ?? -20;
+    totalScore += score;
+  }
+  return totalScore;
+}
 function makeKey(key) {
   if (key.length != 26) {
     throw "Key must be 26 characters long";
@@ -64,7 +84,7 @@ function monoDecrypt(text, key) {
 
 // if this isn't good enough, can use trigrams
 // also not in any way optimized for performance btw
-function chiSquared(text) {
+function chiSquaredUni(text) {
   let char_freqs = [
     0.08167, 0.01492, 0.02782, 0.04253, 0.12702, 0.02228, 0.02015, 0.06094,
     0.06966, 0.00153, 0.00772, 0.04025, 0.02406, 0.06749, 0.07507, 0.01929,
@@ -80,6 +100,7 @@ function chiSquared(text) {
   }
   return total;
 }
+
 function count(text, char) {
   let count = 0;
   for (let i = 0; i < text.length; i++) {
@@ -90,36 +111,32 @@ function count(text, char) {
   return count;
 }
 
-function smartMonoDecrypt(text) {
+function smartMonoDecrypt(text, getScore, iters) {
   // algorithm is hill-climbing
   // for each iteration, swap 2 letters
   // if score increases, keep swap, otherwise revert
   key = "abcdefghijklmnopqrstuvwxyz";
-  let topScore = chiSquared(monoDecrypt(text, key));
+  let topScore = getScore(monoDecrypt(text, key));
   let plainText;
-  console.log(key, topScore);
   if (key.length != 26) {
     throw "Key must be 26 characters long";
   }
-  // chisquared isn't good enough for this
-  // TODO: implement trigrams scoring func
-  // also very obvious perf improvements can be made
+  // very obvious perf improvements can be made
   // e.g. swapping indices instead of letters, speeding up monoDecrypt
   // also caching chiSquared results
-  for (let x = 0; x < 5; x++) {
+  for (let x = 0; x < iters; x++) {
     for (let i = 0; i < key.length; i++) {
       for (let j = i + 1; j < key.length; j++) {
         key = swapChars(key, key[i], key[j]);
         plainText = monoDecrypt(text, key);
-        if (chiSquared(plainText) < topScore) {
-          topScore = chiSquared(plainText);
+        if (getScore(plainText) > topScore) {
+          topScore = getScore(plainText);
         } else {
           key = swapChars(key, key[i], key[j]);
         }
       }
     }
   }
-  console.log(key, topScore);
   return key;
 }
 
@@ -127,7 +144,7 @@ function encryptText(text, key) {
   text = text.toLowerCase();
   key = key.toLowerCase().replace(/[^a-z]/g, "");
   let cipherText = monoEncrypt(text, key);
-  document.getElementById("result").innerHTML = cipherText;
+  document.getElementById("result").innerText = cipherText;
 }
 document.getElementById("decrypt").addEventListener("click", function () {
   decryptText(
@@ -141,7 +158,7 @@ function decryptText(text, key) {
   text = text.toLowerCase();
   key = key.replace(/[^a-z]/g, "");
   let plainText = monoDecrypt(text, key);
-  document.getElementById("result").innerHTML = plainText;
+  document.getElementById("result").innerText = plainText;
 }
 document.getElementById("encrypt").addEventListener("click", function () {
   encryptText(
@@ -150,14 +167,19 @@ document.getElementById("encrypt").addEventListener("click", function () {
   );
 });
 
-function smartDecryptText(text) {
-  let key = smartMonoDecrypt(text);
+function smartDecryptText() {
+  let text = document.getElementById("input").value;
+  let iters = Number(document.getElementById("iters").value);
+  let key = smartMonoDecrypt(text, triScore, iters);
   let plainText = monoDecrypt(text, key);
-  document.getElementById("result").innerHTML = plainText;
+  document.getElementById("result").innerText = plainText;
+  document.getElementById("key-result").innerText = key;
+  document.getElementById("score-result").innerText =
+    triScore(plainText).toFixed(2);
 }
-document.getElementById("smart-decrypt").addEventListener("click", function () {
-  smartDecryptText(document.getElementById("input").value);
-});
+document
+  .getElementById("smart-decrypt")
+  .addEventListener("click", smartDecryptText);
 
 function reverseKey(key) {
   let reversed = Object.entries(key).map((kv) => kv.reverse());

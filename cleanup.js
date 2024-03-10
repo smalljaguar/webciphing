@@ -124,3 +124,7 @@ document
 document
   .getElementById("copy-to-clipboard")
   .addEventListener("click", copyToClipboard);
+document
+  .getElementById("copy-from-clipboard")
+  .addEventListener("click", copyFromClipboard);
+document.getElementById("add-spaces").addEventListener("click", addSpaces);
