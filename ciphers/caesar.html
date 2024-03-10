@@ -3,9 +3,9 @@
 <html lang="en-GB">
   <head>
     <meta charset="UTF-8" />
-    <link rel="stylesheet" type="text/css" href="/main.css" />
+    <link rel="stylesheet" type="text/css" href="../main.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" href="/favicon.png" type="image/png" />
+    <link rel="icon" href="../favicon.png" type="image/png" />
     <meta
       name="description"
       content="An overview of ciphers available, from atbash to vigenere"
@@ -17,10 +17,10 @@
     <header>
       <nav>
         <ul>
-          <li><a href="/index.html">Home</a></li>
-          <li><a href="/ciphers">Ciphers</a></li>
-          <li><a href="/analysis.html">Cipher Identifier</a></li>
-          <li><a href="/cleanup.html"> Text Cleanup </a></li>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../ciphers">Ciphers</a></li>
+          <li><a href="../analysis.html">Cipher Identifier</a></li>
+          <li><a href="../cleanup.html"> Text Cleanup </a></li>
         </ul>
       </nav>
       <select id="colour-mode">
@@ -37,7 +37,7 @@
     </p>
     <p>
       It is a general case of rot13, and a special case of a
-      <a href="/monosub.html">Monoalphabetic substitution cipher</a>
+      <a href="../monosub.html">Monoalphabetic substitution cipher</a>
     </p>
     <h2>Pseudo Code</h2>
     <pre>
@@ -72,7 +72,7 @@ function caesarCipher(text, shift){
     <button onclick="smartDecryptText(document.getElementById('input').value)">
       Smart Decrypt Text
     </button>
-    <div class="result"></div>
+    <div class="result" id="result"></div>
     <br style="line-height: 1000%" />
     <footer>
       <p>This is the footer of the website.</p>
